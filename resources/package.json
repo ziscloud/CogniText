@@ -7,17 +7,24 @@
   },
   "packageManager": "pnpm@8.15.6",
   "dependencies": {
+    "@dtinsight/molecule": "v1.3.6",
     "@milkdown/crepe": "7.6.2",
     "@milkdown/kit": "7.6.2",
     "@milkdown/react": "7.6.2",
+    "@neutralinojs/lib": "^6.0.0",
     "@type-config/strict": "^1.2.1",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "lodash": "^4.17.21",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "tslib": "^2.4.1",
     "typescript": "^4.8.4",
-    "vite": "^5.2.6"
+    "vite": "^5.2.6",
+    "whatwg-fetch": "^3.6.20"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.16",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0"
   }
 }

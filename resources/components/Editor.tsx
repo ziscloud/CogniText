@@ -1,25 +1,39 @@
-import type { FC } from "react";
-
-import { Crepe } from "@milkdown/crepe";
-import { Milkdown, useEditor } from "@milkdown/react";
+import { useEffect, useRef, useState } from 'react';
+import { Crepe } from '@milkdown/crepe';
 
 import "@milkdown/crepe/theme/common/style.css";
 import "@milkdown/crepe/theme/frame.css";
 
-const markdown = `# Milkdown React Crepe
+const MilkdownEditor = ({ content }: { content: string }) => {
+    const editorRef = useRef<HTMLDivElement>(null);
+    // @ts-ignore
+    const [editor, setEditor] = useState<Crepe | null>(null);
 
-> You're scared of a world where you're needed.
+    useEffect(() => {
+        if (editorRef.current) {
+            const newEditor = new Crepe({
+                root: editorRef.current,
+                defaultValue: content,
+                // features: {
+                //     [Crepe.Feature.CodeMirror]: false,
+                //     [Crepe.Feature.BlockEdit]: false,
+                // },
+            });
 
-This is a demo for using Crepe with **React**.`;
+            newEditor.create().then(() => {
+                setEditor(newEditor);
+            });
 
-export const MilkdownEditor: FC = () => {
-  useEditor((root) => {
-    const crepe = new Crepe({
-      root,
-      defaultValue: markdown,
-    });
-    return crepe;
-  }, []);
+            return () => {
+                newEditor.destroy();
+            };
+        } else {
+            console.log('editorRef is not present')
+            return () => { };
+        }
+    }, [content]);
 
-  return <Milkdown />;
+    return <div ref={editorRef} />;
 };
+
+export default MilkdownEditor;

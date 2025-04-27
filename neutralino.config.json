@@ -3,11 +3,11 @@
   "applicationId": "js.neutralino.sample",
   "version": "1.0.0",
   "defaultMode": "window",
-  "port": 0,
   "documentRoot": "/resources/dist",
   "url": "/",
   "enableServer": true,
   "enableNativeAPI": true,
+  "singlePageServe": true,
   "tokenSecurity": "one-time",
   "logging": {
     "enabled": true,
@@ -16,6 +16,8 @@
   "nativeAllowList": [
     "app.*",
     "os.*",
+    "filesystem.readDirectory",
+    "filesystem.readFile",
     "debug.log"
   ],
   "globalVariables": {
